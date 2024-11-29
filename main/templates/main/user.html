@@ -1,0 +1,57 @@
+{% extends 'main/base.html' %}
+{% block title %}
+       {{ userpag.username}} 
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1>{{ userpag.username }}</h1>
+
+    <ul>
+        <li>Date joined: {{ userpag.date_joined }}</li>
+        <br>
+        {% if userpag.is_active == 1 %}
+        <li>Is active: Yes</li><br>
+        {% else %}
+        <li>Is active: No</li>
+        {% endif %}
+    </ul>
+
+    <style>
+        .form-card {
+          border: 1px solid #28488b;
+          border-radius: 20px;
+          padding: 20px;
+          background-color: #f5f5f5;
+        }
+      
+        .form-card textarea {
+          height: 75px; /* Adjust the height of the textarea */
+          resize: vertical; /* Allow vertical resizing if needed */
+        }
+      </style>
+      
+      <div class="container form-card">
+        <H4>Make a post about {{ userpag.username}}</H4>
+        <form method="POST">
+          {% csrf_token %}
+          {{ form|crispy }}
+      
+          <button type="submit" class="btn btn-success">Post</button>
+        </form>
+      </div>
+      
+       
+      {% for post in posts %}
+      <div class="card mt-2">
+        <div class="card-header"><strong>{{ post.author.username }}</strong></div>
+        <div class="card-body d-flex flex-row justify-content-between">
+          <div>
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p>{{ post.body }}</p>
+          </div>
+        </div>
+        <div class="card-footer text muted">{{ post.created }} </div>
+      </div>
+  {% endfor %}
+
+{% endblock %}

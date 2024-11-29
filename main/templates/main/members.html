@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+{% block title %}
+       Members 
+{% endblock %}
+{% block content %}
+    <style>
+        .member-link {
+            color: #292929; /* Sets the link color */
+            text-decoration: none; /* Removes underline */
+            font-weight: bold; /* Makes the link text bold */
+
+        }
+
+        .member-link:hover {
+            color: #1f1f1f; /* Changes the link color on hover */
+            text-decoration: none; /* Adds underline on hover */
+            font-size: 20px;
+        }
+    </style>
+
+    <h1>Here are the members</h1>
+
+    <h2>Members</h2>
+  
+    <ul>
+      {% for x in usernames %}
+        <li><a class="member-link" href="{{ x.id }}">{{ x.username }}</a></li>
+      {% endfor %}
+    </ul>
+
+    
+{% endblock %}

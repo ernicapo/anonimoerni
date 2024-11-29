@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+{% block title %}
+       Login 
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+    <div class="container" style="max-width: 500px; border: 1px solid #28488b; border-radius: 20px; padding: 30px;">
+        <h1>Login</h1>
+        <form method="POST">
+
+            ernicapo celudecamila
+            
+
+            {% csrf_token %}
+            {{form|crispy}}
+            <H6>If you don't have an account, register <a href="/register">here</a></H6>
+            <button type="submit" class="btn btn-success">Login</button>
+        </form>
+        
+    </div>
+{% endblock %}

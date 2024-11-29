@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+{% block title %}
+       Schools 
+{% endblock %}
+{% block content %}
+    <style>
+        .school-link {
+            color: #292929; /* Sets the link color */
+            text-decoration: none; /* Removes underline */
+            font-weight: bold; /* Makes the link text bold */
+
+        }
+
+        .school-link:hover {
+            color: #1f1f1f; /* Changes the link color on hover */
+            text-decoration: none; /* Adds underline on hover */
+            font-size: 20px;
+        }
+    </style>
+
+    <h1>Here are the schools</h1>
+
+    <h2>schools</h2>
+  
+    <ul>
+      {% for x in schools %}
+        <li><a class="school-link" href="{{ x.id }}">{{ x.name }}</a></li>
+      {% endfor %}
+    </ul>
+
+    
+{% endblock %}
